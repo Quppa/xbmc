@@ -17,6 +17,7 @@
 #include "utils/EndianSwap.h"
 #include "utils/log.h"
 #include "windowing/GraphicContext.h"
+#include "windowing/WinSystem.h"
 
 CDVDOverlayCodecFFmpeg::CDVDOverlayCodecFFmpeg() : CDVDOverlayCodec("FFmpeg Subtitle Decoder")
 {
@@ -244,9 +245,10 @@ std::shared_ptr<CDVDOverlay> CDVDOverlayCodecFFmpeg::GetOverlay()
       }
     }
 
-    RENDER_STEREO_MODE render_stereo_mode = CServiceBroker::GetWinSystem()->GetGfxContext().GetStereoMode();
-    if (render_stereo_mode != RENDER_STEREO_MODE_OFF &&
-        render_stereo_mode != RENDER_STEREO_MODE_HARDWAREBASED)
+    RenderStereoMode render_stereo_mode =
+        CServiceBroker::GetWinSystem()->GetGfxContext().GetStereoMode();
+    if (render_stereo_mode != RenderStereoMode::OFF &&
+        render_stereo_mode != RenderStereoMode::HARDWAREBASED)
     {
       if (rect.h > m_height / 2)
       {

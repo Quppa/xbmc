@@ -28,7 +28,7 @@
 struct LocStr
 {
   std::string strTranslated; // string to be used in xbmc GUI
-  std::string strOriginal;   // the original English string the translation is based on
+  std::string strOriginal; // the original English string the translation is based on
 };
 
 // The default fallback language is fixed to be English
@@ -60,15 +60,7 @@ public:
 protected:
   std::unordered_map<uint32_t, LocStr> m_strings;
   std::unordered_map<std::string, std::unordered_map<uint32_t, LocStr>> m_addonStrings;
-  typedef std::unordered_map<uint32_t, LocStr>::const_iterator ciStrings;
-  typedef std::unordered_map<uint32_t, LocStr>::iterator iStrings;
 
   mutable CSharedSection m_stringsMutex;
   mutable CSharedSection m_addonStringsMutex;
 };
-
-/*!
- \ingroup strings
- \brief
- */
-extern CLocalizeStrings g_localizeStrings;

@@ -11,9 +11,10 @@
 #include "ServiceBroker.h"
 #include "Util.h"
 #include "guilib/GUIImage.h"
-#include "guilib/GUIWindowManager.h"
+#include "guilib/WindowIDs.h"
 #include "settings/AdvancedSettings.h"
 #include "settings/SettingsComponent.h"
+#include "windowing/WinSystem.h"
 
 #include <memory>
 
